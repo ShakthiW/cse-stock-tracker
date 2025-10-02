@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="home-wrapper flex min-h-screen">
+    <div className="home-wrapper flex">
       <h1>Home</h1>
     </div>
   )

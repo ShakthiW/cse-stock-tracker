@@ -1,6 +1,7 @@
 "use client";
 
 import { CountrySelectField } from "@/components/forms/CountrySelectField";
+import FooterLink from "@/components/forms/FooterLink";
 import InputField from "@/components/forms/InputField";
 import SelectField from "@/components/forms/SelectField";
 import { Button } from "@/components/ui/button";
@@ -74,7 +75,7 @@ const SignUp = () => {
           error={errors.password}
           validation={{ required: "Password is required", minLength: 8 }}
         />
-        
+
         {/* Conuntry */}
         <CountrySelectField
           name="country"
@@ -121,6 +122,13 @@ const SignUp = () => {
             ? "Creating account..."
             : "Start your investment journey"}
         </Button>
+
+        {/* Footer Link */}
+        <FooterLink
+          text="Already have an account?"
+          linkText="Sign in"
+          href="/sign-in"
+        />
       </form>
     </>
   );

@@ -59,7 +59,7 @@ export const sendSignUpEmail = inngest.createFunction(
 
 export const sendDailyNewsSummary = inngest.createFunction(
   { id: "daily-news-summary" },
-  [{ event: "app/send.daily.news" }, { cron: "*/2 * * * *" }],
+  [{ event: "app/send.daily.news" }, { cron: "0 12 * * *" }],
   async ({ step }) => {
     // Step #1: Get all users for news delivery
     const users = await step.run("get-all-users", getAllUsersForNewsEmail);
@@ -119,7 +119,12 @@ export const sendDailyNewsSummary = inngest.createFunction(
 
         userNewsSummaries.push({ user, newsContent });
       } catch (e) {
-        console.error("Failed to summarize news for : ", user.email, "error: ", e);
+        console.error(
+          "Failed to summarize news for : ",
+          user.email,
+          "error: ",
+          e
+        );
         userNewsSummaries.push({ user, newsContent: null });
       }
     }
